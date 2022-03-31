@@ -17,19 +17,19 @@ var i;
 for (i = 0; i < buttons.length; i++) {
     buttons[i].onclick = function (e) {
         var btnText = this.innerHTML;
-        if (btnText === 'AC') { // clear the screen
+        if (btnText === 'AC') {
             input = '';
             operatorFlag = false;
             equation = '';
-        } else if (btnText === 'CE') { // delete one character
+        } else if (btnText === 'CE') { 
             input = input.slice(0, input.length - 1);
 
-        } else if (btnText === '.') { // process the dot input
-            if (input.indexOf('.') === -1 || dotFlag) { // only one dot is allowed
+        } else if (btnText === '.') { 
+            if (input.indexOf('.') === -1 || dotFlag) { 
                 input += '.';
                 dotFlag = false;
             }
-        } else if (btnText === '=') { // process the equation when equals button is pressed
+        } else if (btnText === '=') { 
             if (operator.indexOf(input[input.length - 1]) > -1) {
                 input = input.slice(0, input.length - 1);
             }
@@ -39,15 +39,14 @@ for (i = 0; i < buttons.length; i++) {
             input = result;
             operatorFlag = true;
 
-        } else if (operator.indexOf(btnText) > -1) { // process the operator input
+        } else if (operator.indexOf(btnText) > -1) { 
             if (operatorFlag) {
                 input += btnText;
                 operatorFlag = false;
             } else {
                 input = input.slice(0, input.length - 1) + btnText;
             }
-            dotFlag = true; // after operator character it is allowed to insert
-                            // another dot in equation
+            dotFlag = true; 
         } else {
             if (result !== '' && operator.indexOf(input[input.length - 1]) > -1) {
                 input += btnText;
